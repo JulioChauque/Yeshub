@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services – YES</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ── YES WEBSITE — GLOBAL STYLES ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --black: #0A0A0A;
+  --white: #FFFFFF;
+  --off-white: #F5F5F0;
+  --grey: #555555;
+  --light-grey: #E0E0E0;
+  --serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --sans: 'Outfit', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--white); color: var(--black); overflow-x: hidden; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.2rem 5vw;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--light-grey);
+}
+.nav-logo img { height: 36px; width: auto; }
+.nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+.nav-links a {
+  text-decoration: none; color: var(--grey);
+  font-size: 0.78rem; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--black); }
+.nav-cta {
+  background: var(--black) !important; color: var(--white) !important;
+  padding: 0.5rem 1.3rem; border-radius: 2px;
+}
+.nav-cta:hover { background: var(--grey) !important; }
+
+/* ── BUTTONS ── */
+.btn-primary {
+  display: inline-block; background: var(--black); color: var(--white);
+  padding: 0.9rem 2.2rem; font-family: var(--sans); font-size: 0.8rem;
+  font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  text-decoration: none; border: 2px solid var(--black);
+  transition: background 0.25s, color 0.25s; cursor: pointer;
+}
+.btn-primary:hover { background: transparent; color: var(--black); }
+.btn-secondary {
+  display: inline-block; background: transparent; color: var(--black);
+  padding: 0.9rem 2.2rem; font-family: var(--sans); font-size: 0.8rem;
+  font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  text-decoration: none; border: 2px solid var(--light-grey);
+  transition: border-color 0.25s;
+}
+.btn-secondary:hover { border-color: var(--black); }
+.btn-outline-white {
+  display: inline-block; background: transparent; color: var(--white);
+  padding: 0.9rem 2.2rem; font-family: var(--sans); font-size: 0.8rem;
+  font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  text-decoration: none; border: 2px solid rgba(255,255,255,0.5);
+  transition: border-color 0.25s;
+}
+.btn-outline-white:hover { border-color: var(--white); }
+
+/* ── SECTION COMMON ── */
+section { padding: 6rem 5vw; }
+.section-label { font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--grey); margin-bottom: 1rem; }
+.section-title { font-family: var(--serif); font-size: clamp(1.8rem, 3.5vw, 3rem); font-weight: 700; line-height: 1.15; color: var(--black); margin-bottom: 1.5rem; }
+.section-body { font-size: 1rem; font-weight: 300; color: var(--grey); line-height: 1.8; max-width: 620px; }
+.divider { width: 40px; height: 2px; background: var(--black); margin-bottom: 1.5rem; }
+.divider-white { width: 40px; height: 2px; background: var(--white); margin-bottom: 1.5rem; }
+
+/* ── PAGE HERO (inner pages) ── */
+.page-hero {
+  min-height: 50vh; display: flex; flex-direction: column;
+  justify-content: flex-end; padding: 8rem 5vw 4rem;
+  background: var(--black); color: var(--white); position: relative; overflow: hidden;
+}
+.page-hero .section-label { color: rgba(255,255,255,0.5); }
+.page-hero .section-title { color: var(--white); max-width: 700px; }
+.page-hero .section-body { color: rgba(255,255,255,0.65); }
+.page-hero-bg {
+  position: absolute; bottom: -3rem; right: -2rem;
+  font-family: var(--serif); font-size: clamp(6rem, 18vw, 16rem);
+  font-weight: 900; color: rgba(255,255,255,0.04);
+  line-height: 1; pointer-events: none; user-select: none;
+}
+
+/* ── CTA BAND ── */
+.cta-band {
+  background: var(--black); color: var(--white);
+  padding: 5rem 5vw; text-align: center;
+}
+.cta-band .section-title { color: var(--white); max-width: 600px; margin: 0 auto 2rem; }
+.cta-band .section-label { color: rgba(255,255,255,0.45); }
+.cta-band .btn-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--black); color: var(--white);
+  padding: 2.5rem 5vw;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+}
+footer img { height: 30px; opacity: 0.85; }
+.footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+.footer-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+.footer-links a:hover { color: var(--white); }
+.footer-copy { font-size: 0.75rem; color: rgba(255,255,255,0.25); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.anim-1 { animation: fadeUp 0.8s 0.1s both; }
+.anim-2 { animation: fadeUp 0.8s 0.25s both; }
+.anim-3 { animation: fadeUp 0.8s 0.4s both; }
+.anim-4 { animation: fadeUp 0.8s 0.55s both; }
+.anim-5 { animation: fadeUp 0.8s 0.7s both; }
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .page-hero { min-height: 40vh; padding-top: 7rem; }
+}
+
+</style>
+<style>
+.svc-intro { background: var(--white); }
+.svc-hub { display: grid; grid-template-columns: repeat(2,1fr); gap: 1px; background: var(--light-grey); border: 1px solid var(--light-grey); margin-top: 3rem; }
+.svc-hub-card { background: var(--off-white); padding: 3rem 2.5rem; text-decoration: none; color: inherit; display: block; transition: background 0.25s; position: relative; }
+.svc-hub-card:hover { background: var(--black); }
+.svc-hub-card:hover h3, .svc-hub-card:hover p, .svc-hub-card:hover .svc-hub-num, .svc-hub-card:hover .svc-hub-arrow { color: var(--white); }
+.svc-hub-card:hover .svc-hub-line { background: rgba(255,255,255,0.3); }
+.svc-hub-num { font-size: 0.7rem; letter-spacing: 0.2em; color: var(--grey); margin-bottom: 1.5rem; transition: color 0.25s; }
+.svc-hub-line { width: 32px; height: 1px; background: var(--light-grey); margin-bottom: 1.2rem; transition: background 0.25s; }
+.svc-hub-card h3 { font-family: var(--serif); font-size: 1.3rem; font-weight: 700; margin-bottom: 0.8rem; transition: color 0.25s; }
+.svc-hub-card p { font-size: 0.9rem; font-weight: 300; color: var(--grey); line-height: 1.7; max-width: 380px; transition: color 0.25s; }
+.svc-hub-arrow { display: block; margin-top: 2rem; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--grey); transition: color 0.25s; }
+@media(max-width:768px){ .svc-hub { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo"><a href="index.html"><img src="data:image/png;base64,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" alt="YES"></a></div>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="innovation.html">Innovation</a></li>
+    <li><a href="founder.html">Founder</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <p class="section-label anim-1">Our Services</p>
+  <div class="divider-white anim-2"></div>
+  <h1 class="section-title anim-3">Six ways YES<br><em>delivers value</em></h1>
+  <p class="section-body anim-4" style="margin-top:1rem;">Practical, adaptable services designed around your objectives — not generic solutions.</p>
+  <div class="page-hero-bg">Services</div>
+</div>
+
+<section class="svc-intro">
+  <p class="section-label reveal">Services Hub</p>
+  <div class="divider reveal"></div>
+  <h2 class="section-title reveal">What we offer</h2>
+  <p class="section-body reveal">YES delivers across six core service areas. Each is tailored to the client's context, combining strategic thinking with practical execution. Select a service to learn more.</p>
+  <div class="svc-hub reveal">
+    <a href="contact.html" id="comm" class="svc-hub-card">
+      <p class="svc-hub-num">01</p><div class="svc-hub-line"></div>
+      <h3>Strategic Communication &amp; Brand Visibility</h3>
+      <p>Designing and implementing communication strategies that strengthen brand identity, enhance public presence, and position organizations for long-term recognition and impact.</p>
+      <span class="svc-hub-arrow">Enquire about this service →</span>
+    </a>
+    <a href="contact.html" id="digital" class="svc-hub-card">
+      <p class="svc-hub-num">02</p><div class="svc-hub-line"></div>
+      <h3>Digital Platforms &amp; Web Solutions</h3>
+      <p>Creating tailored digital experiences, including websites, apps, and software solutions, that optimize business operations, user engagement, and digital transformation.</p>
+      <span class="svc-hub-arrow">Enquire about this service →</span>
+    </a>
+    <a href="contact.html" id="bizdev" class="svc-hub-card">
+      <p class="svc-hub-num">03</p><div class="svc-hub-line"></div>
+      <h3>Business Development &amp; Market Support</h3>
+      <p>Providing actionable strategies for growth, partnership development, and market expansion, helping organizations identify opportunities and achieve measurable results.</p>
+      <span class="svc-hub-arrow">Enquire about this service →</span>
+    </a>
+    <a href="contact.html" id="ai" class="svc-hub-card">
+      <p class="svc-hub-num">04</p><div class="svc-hub-line"></div>
+      <h3>AI-Driven Productivity Solutions</h3>
+      <p>Leveraging emerging AI tools to streamline workflows, enhance decision-making, and improve efficiency across business operations and organizational processes.</p>
+      <span class="svc-hub-arrow">Enquire about this service →</span>
+    </a>
+    <a href="contact.html" id="events" class="svc-hub-card">
+      <p class="svc-hub-num">05</p><div class="svc-hub-line"></div>
+      <h3>Event &amp; Project Coordination</h3>
+      <p>Delivering professional event planning and project management services, ensuring seamless execution, stakeholder engagement, and impactful outcomes.</p>
+      <span class="svc-hub-arrow">Enquire about this service →</span>
+    </a>
+    <a href="accommodation.html" class="svc-hub-card">
+      <p class="svc-hub-num">06</p><div class="svc-hub-line"></div>
+      <h3>Accommodation Solutions</h3>
+      <p>Flexible, tailored housing solutions — room rentals, apartment and house sourcing, and customized occupancy options for individuals, professionals, and organizations.</p>
+      <span class="svc-hub-arrow">View Accommodation Platform →</span>
+    </a>
+  </div>
+</section>
+
+<div class="cta-band">
+  <p class="section-label">Start a Conversation</p>
+  <h2 class="section-title">Not sure which service fits?<br><em>Let's talk.</em></h2>
+  <div class="btn-row">
+    <a href="contact.html" class="btn-primary">Contact YES</a>
+  </div>
+</div>
+
+<footer>
+  <a href="index.html"><img src="data:image/png;base64,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" alt="YES"></a>
+  <ul class="footer-links">
+    <li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li>
+    <li><a href="innovation.html">Innovation</a></li><li><a href="founder.html">Founder</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <p class="footer-copy">&copy; 2026 YES – Young Entrepreneurial Solutions E.I. · Mozambique</p>
+</footer>
+<script>
+const obs=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add('visible')),{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body></html>

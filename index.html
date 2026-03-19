@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>YES – Young Entrepreneurial Solutions</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ── YES WEBSITE — GLOBAL STYLES ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --black: #0A0A0A;
+  --white: #FFFFFF;
+  --off-white: #F5F5F0;
+  --grey: #555555;
+  --light-grey: #E0E0E0;
+  --serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --sans: 'Outfit', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: var(--sans); background: var(--white); color: var(--black); overflow-x: hidden; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.2rem 5vw;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--light-grey);
+}
+.nav-logo img { height: 36px; width: auto; }
+.nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+.nav-links a {
+  text-decoration: none; color: var(--grey);
+  font-size: 0.78rem; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--black); }
+.nav-cta {
+  background: var(--black) !important; color: var(--white) !important;
+  padding: 0.5rem 1.3rem; border-radius: 2px;
+}
+.nav-cta:hover { background: var(--grey) !important; }
+
+/* ── BUTTONS ── */
+.btn-primary {
+  display: inline-block; background: var(--black); color: var(--white);
+  padding: 0.9rem 2.2rem; font-family: var(--sans); font-size: 0.8rem;
+  font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  text-decoration: none; border: 2px solid var(--black);
+  transition: background 0.25s, color 0.25s; cursor: pointer;
+}
+.btn-primary:hover { background: transparent; color: var(--black); }
+.btn-secondary {
+  display: inline-block; background: transparent; color: var(--black);
+  padding: 0.9rem 2.2rem; font-family: var(--sans); font-size: 0.8rem;
+  font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  text-decoration: none; border: 2px solid var(--light-grey);
+  transition: border-color 0.25s;
+}
+.btn-secondary:hover { border-color: var(--black); }
+.btn-outline-white {
+  display: inline-block; background: transparent; color: var(--white);
+  padding: 0.9rem 2.2rem; font-family: var(--sans); font-size: 0.8rem;
+  font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  text-decoration: none; border: 2px solid rgba(255,255,255,0.5);
+  transition: border-color 0.25s;
+}
+.btn-outline-white:hover { border-color: var(--white); }
+
+/* ── SECTION COMMON ── */
+section { padding: 6rem 5vw; }
+.section-label { font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--grey); margin-bottom: 1rem; }
+.section-title { font-family: var(--serif); font-size: clamp(1.8rem, 3.5vw, 3rem); font-weight: 700; line-height: 1.15; color: var(--black); margin-bottom: 1.5rem; }
+.section-body { font-size: 1rem; font-weight: 300; color: var(--grey); line-height: 1.8; max-width: 620px; }
+.divider { width: 40px; height: 2px; background: var(--black); margin-bottom: 1.5rem; }
+.divider-white { width: 40px; height: 2px; background: var(--white); margin-bottom: 1.5rem; }
+
+/* ── PAGE HERO (inner pages) ── */
+.page-hero {
+  min-height: 50vh; display: flex; flex-direction: column;
+  justify-content: flex-end; padding: 8rem 5vw 4rem;
+  background: var(--black); color: var(--white); position: relative; overflow: hidden;
+}
+.page-hero .section-label { color: rgba(255,255,255,0.5); }
+.page-hero .section-title { color: var(--white); max-width: 700px; }
+.page-hero .section-body { color: rgba(255,255,255,0.65); }
+.page-hero-bg {
+  position: absolute; bottom: -3rem; right: -2rem;
+  font-family: var(--serif); font-size: clamp(6rem, 18vw, 16rem);
+  font-weight: 900; color: rgba(255,255,255,0.04);
+  line-height: 1; pointer-events: none; user-select: none;
+}
+
+/* ── CTA BAND ── */
+.cta-band {
+  background: var(--black); color: var(--white);
+  padding: 5rem 5vw; text-align: center;
+}
+.cta-band .section-title { color: var(--white); max-width: 600px; margin: 0 auto 2rem; }
+.cta-band .section-label { color: rgba(255,255,255,0.45); }
+.cta-band .btn-row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--black); color: var(--white);
+  padding: 2.5rem 5vw;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+}
+footer img { height: 30px; opacity: 0.85; }
+.footer-links { display: flex; gap: 2rem; list-style: none; flex-wrap: wrap; }
+.footer-links a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+.footer-links a:hover { color: var(--white); }
+.footer-copy { font-size: 0.75rem; color: rgba(255,255,255,0.25); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.anim-1 { animation: fadeUp 0.8s 0.1s both; }
+.anim-2 { animation: fadeUp 0.8s 0.25s both; }
+.anim-3 { animation: fadeUp 0.8s 0.4s both; }
+.anim-4 { animation: fadeUp 0.8s 0.55s both; }
+.anim-5 { animation: fadeUp 0.8s 0.7s both; }
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .page-hero { min-height: 40vh; padding-top: 7rem; }
+}
+
+</style>
+<style>
+/* HOME-SPECIFIC */
+.hero {
+  min-height: 100vh; display: flex; flex-direction: column;
+  justify-content: center; padding: 0 5vw; padding-top: 80px;
+  position: relative; overflow: hidden;
+}
+.hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--grey); margin-bottom: 1.8rem; }
+.hero-headline {
+  font-family: var(--serif); font-size: clamp(3rem, 7.5vw, 6.5rem);
+  font-weight: 900; line-height: 1.0; color: var(--black); max-width: 900px; margin-bottom: 1.8rem;
+}
+.hero-headline em { font-style: italic; font-weight: 400; }
+.hero-sub { font-size: clamp(0.95rem, 1.3vw, 1.1rem); font-weight: 300; color: var(--grey); max-width: 520px; line-height: 1.75; margin-bottom: 2.5rem; }
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.hero-bg { position: absolute; bottom: -3vw; right: -2vw; font-family: var(--serif); font-size: clamp(8rem, 22vw, 22rem); font-weight: 900; color: rgba(0,0,0,0.03); line-height: 1; pointer-events: none; user-select: none; }
+.hero-scroll { position: absolute; bottom: 2.5rem; left: 5vw; display: flex; align-items: center; gap: 0.8rem; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--grey); }
+.hero-scroll-line { width: 40px; height: 1px; background: var(--grey); }
+
+/* INTRO */
+.intro { background: var(--off-white); }
+.intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; margin-top: 3rem; }
+
+/* SERVICES OVERVIEW */
+.services-preview { background: var(--white); }
+.services-grid-home { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--light-grey); border: 1px solid var(--light-grey); margin-top: 3rem; }
+.svc-card { background: var(--white); padding: 2rem; transition: background 0.25s; text-decoration: none; color: inherit; display: block; }
+.svc-card:hover { background: var(--black); }
+.svc-card:hover .svc-num, .svc-card:hover .svc-title, .svc-card:hover .svc-arrow { color: var(--white); }
+.svc-card:hover .svc-line { background: var(--white); }
+.svc-num { font-size: 0.7rem; letter-spacing: 0.2em; color: var(--grey); margin-bottom: 1.2rem; transition: color 0.25s; }
+.svc-line { width: 28px; height: 1px; background: var(--black); margin-bottom: 1rem; transition: background 0.25s; }
+.svc-title { font-family: var(--serif); font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; transition: color 0.25s; }
+.svc-arrow { font-size: 0.8rem; color: var(--grey); transition: color 0.25s; margin-top: 1rem; }
+
+/* WHY YES */
+.why { background: var(--black); }
+.why .section-label { color: rgba(255,255,255,0.4); }
+.why .section-title { color: var(--white); }
+.why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 2.5rem; margin-top: 3rem; }
+.why-item { border-top: 1px solid rgba(255,255,255,0.12); padding-top: 1.5rem; }
+.why-item h4 { font-family: var(--serif); font-size: 1rem; color: var(--white); margin-bottom: 0.5rem; }
+.why-item p { font-size: 0.88rem; font-weight: 300; color: rgba(255,255,255,0.45); line-height: 1.7; }
+
+/* INNOVATION PREVIEW */
+.innovation-preview { background: var(--off-white); }
+.innov-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; margin-top: 3rem; }
+.innov-stat { border-left: 2px solid var(--black); padding-left: 1.5rem; margin-bottom: 2rem; }
+.innov-stat .num { font-family: var(--serif); font-size: 2.8rem; font-weight: 900; line-height: 1; }
+.innov-stat .lbl { font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--grey); margin-top: 0.3rem; }
+
+/* FOUNDER HIGHLIGHT */
+.founder-highlight { background: var(--white); }
+.founder-grid { display: grid; grid-template-columns: 300px 1fr; gap: 5rem; align-items: center; margin-top: 3rem; }
+.founder-img { aspect-ratio: 3/4; background: var(--off-white); border: 1px solid var(--light-grey); display: flex; align-items: center; justify-content: center; position: relative; }
+.founder-initials { font-family: var(--serif); font-size: 4rem; font-weight: 900; color: var(--light-grey); }
+.founder-photo-note { position: absolute; bottom: 1rem; left: 0; right: 0; text-align: center; font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--grey); }
+.founder-name { font-family: var(--serif); font-size: 1.8rem; font-weight: 700; margin-bottom: 0.3rem; }
+.founder-role { font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--grey); margin-bottom: 1.5rem; }
+
+@media(max-width:768px){
+  .intro-grid, .innov-grid, .founder-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .services-grid-home { grid-template-columns: 1fr; }
+  .founder-img { aspect-ratio: 1/1; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo"><a href="index.html"><img src="data:image/png;base64,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" alt="YES"></a></div>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="innovation.html">Innovation</a></li>
+    <li><a href="founder.html">Founder</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-eyebrow anim-1">Young Entrepreneurial Solutions · Mozambique</p>
+  <h1 class="hero-headline anim-2">Strategic Solutions<br>for <em>Growth,</em><br>Innovation &amp;<br>Digital Transformation</h1>
+  <p class="hero-sub anim-3">YES supports businesses, institutions, and entrepreneurs through communication, digital development, business strategy, and AI-driven innovation.</p>
+  <div class="hero-actions anim-4">
+    <a href="services.html" class="btn-primary">Our Services</a>
+    <a href="contact.html" class="btn-secondary">Get In Touch</a>
+  </div>
+  <div class="hero-bg">YES</div>
+  <div class="hero-scroll anim-5"><span class="hero-scroll-line"></span>Scroll to explore</div>
+</section>
+
+<!-- SHORT INTRO -->
+<section class="intro">
+  <p class="section-label reveal">Who We Are</p>
+  <div class="divider reveal"></div>
+  <div class="intro-grid">
+    <div>
+      <h2 class="section-title reveal">A Mozambican company<br>built for <em>modern challenges</em></h2>
+    </div>
+    <div>
+      <p class="section-body reveal">YES (Young Entrepreneurial Solutions E.I.) is a multidisciplinary company delivering practical business solutions through strategic communication, digital innovation, and entrepreneurial thinking. We combine technology, strategy, and local expertise to create measurable value for businesses and institutions.</p>
+      <br>
+      <a href="about.html" class="btn-secondary reveal" style="margin-top:1rem;">Learn About YES</a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES OVERVIEW -->
+<section class="services-preview">
+  <p class="section-label reveal">What We Do</p>
+  <div class="divider reveal"></div>
+  <h2 class="section-title reveal">Six ways YES<br>delivers value</h2>
+  <div class="services-grid-home reveal">
+    <a href="services.html#comm" class="svc-card">
+      <p class="svc-num">01</p><div class="svc-line"></div>
+      <h3 class="svc-title">Strategic Communication</h3>
+      <p class="svc-arrow">Explore →</p>
+    </a>
+    <a href="services.html#digital" class="svc-card">
+      <p class="svc-num">02</p><div class="svc-line"></div>
+      <h3 class="svc-title">Digital Platforms &amp; Web</h3>
+      <p class="svc-arrow">Explore →</p>
+    </a>
+    <a href="services.html#bizdev" class="svc-card">
+      <p class="svc-num">03</p><div class="svc-line"></div>
+      <h3 class="svc-title">Business Development</h3>
+      <p class="svc-arrow">Explore →</p>
+    </a>
+    <a href="services.html#ai" class="svc-card">
+      <p class="svc-num">04</p><div class="svc-line"></div>
+      <h3 class="svc-title">AI-Driven Productivity</h3>
+      <p class="svc-arrow">Explore →</p>
+    </a>
+    <a href="services.html#events" class="svc-card">
+      <p class="svc-num">05</p><div class="svc-line"></div>
+      <h3 class="svc-title">Event &amp; Project Coordination</h3>
+      <p class="svc-arrow">Explore →</p>
+    </a>
+    <a href="accommodation.html" class="svc-card">
+      <p class="svc-num">06</p><div class="svc-line"></div>
+      <h3 class="svc-title">Accommodation Solutions</h3>
+      <p class="svc-arrow">Explore →</p>
+    </a>
+  </div>
+  <div style="margin-top:2.5rem;" class="reveal"><a href="services.html" class="btn-secondary">View All Services</a></div>
+</section>
+
+<!-- WHY YES -->
+<section class="why">
+  <p class="section-label reveal">Why Work With Us</p>
+  <div class="divider-white reveal"></div>
+  <h2 class="section-title reveal">What sets YES apart</h2>
+  <div class="why-grid">
+    <div class="why-item reveal"><h4>Multidisciplinary Experience</h4><p>Cross-sector expertise bringing fresh perspective to every engagement.</p></div>
+    <div class="why-item reveal"><h4>Practical &amp; Adaptable</h4><p>Solutions built around your reality — not generic frameworks.</p></div>
+    <div class="why-item reveal"><h4>Local Market Depth</h4><p>Deep understanding of Mozambican and evolving regional markets.</p></div>
+    <div class="why-item reveal"><h4>Innovation-Driven</h4><p>Always integrating the most relevant tools and technologies.</p></div>
+    <div class="why-item reveal"><h4>Long-Term Value</h4><p>Committed to sustainable outcomes beyond the engagement.</p></div>
+  </div>
+</section>
+
+<!-- INNOVATION PREVIEW -->
+<section class="innovation-preview">
+  <p class="section-label reveal">Innovation in Practice</p>
+  <div class="divider reveal"></div>
+  <div class="innov-grid">
+    <div class="reveal">
+      <h2 class="section-title">Digital tools<br>that work <em>for you</em></h2>
+      <p class="section-body">Over three years, YES has strengthened its focus on digital innovation — modern web solutions, software-oriented thinking, and the practical application of AI technologies to improve how businesses operate and make decisions.</p>
+      <br><br>
+      <a href="innovation.html" class="btn-primary">Explore Innovation</a>
+    </div>
+    <div>
+      <div class="innov-stat reveal"><div class="num">3+</div><div class="lbl">Years of Digital Innovation Focus</div></div>
+      <div class="innov-stat reveal"><div class="num">6</div><div class="lbl">Core Service Verticals</div></div>
+      <div class="innov-stat reveal"><div class="num">∞</div><div class="lbl">Commitment to Sustainable Growth</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER HIGHLIGHT -->
+<section class="founder-highlight">
+  <p class="section-label reveal">The Founder</p>
+  <div class="divider reveal"></div>
+  <div class="founder-grid">
+    <div class="founder-img reveal">
+      <span class="founder-initials">IK</span>
+      <span class="founder-photo-note">Photo coming soon</span>
+    </div>
+    <div class="reveal">
+      <h3 class="founder-name">Ickx Kwizera</h3>
+      <p class="founder-role">Founder &amp; Director · YES E.I.</p>
+      <p class="section-body">Multidisciplinary experience across hospitality, tourism, business development, energy, entrepreneurship, and technology. Ickx founded YES to deliver practical solutions for modern business challenges with a strong commitment to social impact and sustainable development in Mozambique and beyond.</p>
+      <br><br>
+      <a href="founder.html" class="btn-secondary">Meet the Founder</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <p class="section-label">Ready to Start?</p>
+  <h2 class="section-title">Let's build practical<br>solutions for the future</h2>
+  <div class="btn-row">
+    <a href="contact.html" class="btn-primary">Get In Touch</a>
+    <a href="services.html" class="btn-outline-white">View Services</a>
+  </div>
+</div>
+
+<footer>
+  <a href="index.html"><img src="data:image/png;base64,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" alt="YES"></a>
+  <ul class="footer-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="innovation.html">Innovation</a></li>
+    <li><a href="founder.html">Founder</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <p class="footer-copy">&copy; 2026 YES – Young Entrepreneurial Solutions E.I. · Mozambique</p>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(e => e.forEach(x => x.isIntersecting && x.target.classList.add('visible')), {threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
